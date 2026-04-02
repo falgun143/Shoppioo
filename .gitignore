@@ -1,0 +1,44 @@
+# Dependencies
+node_modules/
+backend/node_modules/
+frontend/node_modules/
+
+# Lock files
+package-lock.json
+frontend/package-lock.json
+backend/package-lock.json
+
+# Environment variables
+.env
+backend/.env
+frontend/.env
+
+# Build output
+frontend/dist/
+frontend/build/
+
+# Logs
+*.log
+backend/logs/
+
+# Uploads
+backend/uploads/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Coverage & testing
+coverage/
+
+# Misc
+*.tgz
+.eslintcache
