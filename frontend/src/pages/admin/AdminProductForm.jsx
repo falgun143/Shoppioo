@@ -267,11 +267,17 @@ export default function AdminProductForm() {
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Full Description</label>
                 <textarea
-                  {...register('description')}
+                  {...register('description', { maxLength: { value: 5000, message: 'Description too long. Max 5000 characters.' } })}
                   rows={6}
                   placeholder="Detailed product description (supports HTML)"
                   className="input-field resize-y"
                 />
+                <div className="flex justify-between mt-1">
+                  {errors.description && <p className="text-red-500 text-xs">{errors.description.message}</p>}
+                  <p className={`text-xs ml-auto ${(watch('description')?.length || 0) > 4500 ? 'text-orange-500 font-medium' : 'text-gray-400'}`}>
+                    {watch('description')?.length || 0}/5000
+                  </p>
+                </div>
               </div>
             </div>
 

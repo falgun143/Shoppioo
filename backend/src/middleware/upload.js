@@ -82,6 +82,7 @@ const productImages = multer({
   fileFilter,
   limits: {
     fileSize: MAX_FILE_SIZE,
+    fieldSize: 10 * 1024 * 1024,
     files: 6,
   },
 }).array('images', 6);
@@ -123,6 +124,9 @@ const handleUpload = (uploadFn) => (req, res, next) => {
         }
         if (err.code === 'LIMIT_FILE_COUNT') {
           return next(new ErrorResponse('Too many files. Maximum 6 images allowed.', 400));
+        }
+        if (err.code === 'LIMIT_FIELD_VALUE') {
+          return next(new ErrorResponse('Text field too long. Please shorten your description or other text fields.', 400));
         }
         return next(new ErrorResponse(`Upload error: ${err.message}`, 400));
       }
